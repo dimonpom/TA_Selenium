@@ -1,0 +1,38 @@
+{
+	"steps":[
+	{
+		"action":"openUrl",
+		"params":"https://www.google.com/",
+		"description":"Open Browser"
+	},
+	{
+		"action":"Click",
+		"params":"/html/body/div[1]/div[4]/form/div[2]/div[1]/div[1]/div/div[2]/input",
+		"description":"Click Element"
+	},
+	{
+		"action":"setValue",
+		"params":"/html/body/div[1]/div[4]/form/div[2]/div[1]/div[1]/div/div[2]/input",
+		"description":"Input: Netcracker"
+	},
+	{
+		"action":"Click",
+		"params":"/html/body/div[1]/div[4]/form/div[2]/div[1]/div[3]/center/input[1]",
+		"description":"Click Search Button"
+	},
+	{
+		"action":"checkElementVisible",
+		"params":"/html/body/div[7]/div[3]/div[10]/div[1]/div[3]/div/div/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div/div[7]",
+		"description":"Check if element is visible"
+	},
+	{
+		"action":"Click",
+		"params":"html/body/div[7]/div[3]/div[10]/div[1]/div[2]/div/div[2]/div[2]/div/div/div/div/div[1]/div/div/div[1]/a/h3",
+		"description":"Click First Result"
+	},
+	{
+		"action":"Screenshot",
+		"description":"Take screenshot"
+	},
+	]
+}
