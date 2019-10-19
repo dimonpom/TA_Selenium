@@ -13,11 +13,11 @@ import java.util.concurrent.TimeUnit;
 
 public class TestTesta {
 
-    private static final String screenshotsPath = "D:\\Screenshots";
+    private static final String SCR_PATH = "D:\\Screenshots";
     private static final String TAG = "GoogleSearchTest";
 
-    Calendar calendar = Calendar.getInstance();
-    WebDriver webDriver;
+    private Calendar calendar = Calendar.getInstance();
+    private WebDriver webDriver;
 
     @Test
     public void TestGoogle(){
@@ -39,13 +39,12 @@ public class TestTesta {
             action = currentObject.getString("action");
             Debug.println(TAG, currentObject.getString("description"));
             if (action.equals("Screenshot")){
-                TakeScreenShot(webDriver, screenshotsPath);
+                TakeScreenShot(webDriver);
             }else {
                 String params = currentObject.getString("params");
 
                 if (action.equals("openUrl")) {
-                    String URL = params;
-                    webDriver.get(URL);
+                    webDriver.get(params);
                 } else if (action.equals("Click")) {
                     WebElement webElement = webDriver.findElement(By.xpath(params));
                     webElement.click();
@@ -54,7 +53,7 @@ public class TestTesta {
                     WebElement webElement = webDriver.findElement(By.xpath(params));
                     webElement.sendKeys(input[input.length - 1]);
                 } else if (action.equals("checkElementVisible")){
-                    Boolean isVisible = webDriver.findElement(By.xpath(params)).isDisplayed();
+                    boolean isVisible = webDriver.findElement(By.xpath(params)).isDisplayed();
                     System.out.print("Element visibility: "+isVisible);
                 } else {
                     System.out.println("Action type unknown");
@@ -82,10 +81,10 @@ public class TestTesta {
         return result;
     }
 
-    private void TakeScreenShot(WebDriver driver, String path){
+    private void TakeScreenShot(WebDriver driver){
         File tempFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileHandler.copy(tempFile, new File(path+"\\screenshot_"+ calendar.getTimeInMillis()+".png" ));
+            FileHandler.copy(tempFile, new File(TestTesta.SCR_PATH +"\\screenshot_"+ calendar.getTimeInMillis()+".png" ));
         } catch (IOException e) {
             e.printStackTrace();
         }
